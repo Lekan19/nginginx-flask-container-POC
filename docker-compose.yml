@@ -1,0 +1,34 @@
+version: "3.7"
+x-global-env: &flask-env
+  - FLASK_ENV=production
+
+services:
+  app:
+    hostname: app
+    container_name: containerize_app_1
+    image: adhoc/app:latest
+    environment:
+      *flask-env
+    networks:
+      - default
+    deploy:
+      mode: replicated
+      replicas: 1
+      
+
+    
+  nginx:
+    hostname: nginx
+    container_name: containerize_nginx_1
+    image: adhoc/nginx:latest
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - default
+    deploy:
+      mode: replicated
+      replicas: 1
+    depends_on:
+      - app
+   
