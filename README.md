@@ -4,7 +4,6 @@
 
 You are part of a remote and distributed team who is developing a Python web application. Lately, your peers have been complaining about Python version differences causing the app to behave differently or not work at all. The problems are not consistent across all team members and you see ["Works on my machine!"](https://blog.codinghorror.com/the-works-on-my-machine-certification-program/) in Slack a lot more now.
 
-The first "production" launch of the app is a low traffic private beta that is scheduled for next week. To support the launch, you need to build a production ready setup. Since the application is still in heavy development you don't want to make the version differences worse by adding yet another environment. You therefore decide to use Docker to build a setup that can be used for development and production.
 
 ## The Task
 
@@ -61,24 +60,3 @@ You may also run the included validation tool to further test your work. This sc
 # Stop, remove, rebuild containers, and run tests (see -h for help)
 ./validate.sh
 ```
-
-## Tips & Guidance
-
-### Tips
-
-- Windows 10 Home users will need to use [Docker toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) or will need to do the exercise in a Linux VM / cloud instance since Docker Desktop for Windows requires Hyper-V, a Pro only feature.
-- The Python app is [a Flask app](https://flask.palletsprojects.com/en/1.1.x/) and can be configured with [environment variables](https://flask.palletsprojects.com/en/1.1.x/config/)
-- You can use [gunicorn](https://gunicorn.org/) for the production server service. Since we're not testing a full production config in this exercise, you don't need to tune it. Simply show that the app image boots and serves traffic using a real server. If you are more familiar with a different standalone WSGI server, feel free to substitute it and discuss the change in your `COMMENTS.md` file.
-
-### Dos
-
-- Do add notes on running your solution and why you choose your particular solution in a `COMMENTS.md` file. Remember, you are working with a remote team. Written communication is important!
-- Do feel free to offer suggestions or feedback on this exercise
-
-### Do Nots
-
-- Do not worry about data persistence, scaling, or OCSP stapling
-- Do not alter `validate.sh` or the SSL key pair in `nginx/files`.
-- Do not modify the `app` and `nginx` service names in `docker-compose.yml`.
-- Do not modify the `app` and `nginx` container names in `docker-compose.yml`.
-- Do not create any additional Dockerfile or docker-compose files.
